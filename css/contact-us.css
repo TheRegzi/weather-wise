@@ -25,9 +25,13 @@
 .box1 h2,
 .box1 h3 {
     font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.3em;
-    font-weight: 600;
+    font-size: 1.4em;
+    font-weight: 700;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.box1 h3 {
+    font-size: 1.2em;
 }
 
 .box1 p {
