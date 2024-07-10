@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Wise | About us</title>
+    <link rel="icon" href="/favicon/favicon.ico">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/contact-us.css">
+    <script src="https://kit.fontawesome.com/878e5c0278.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<script type="module" src="/js/index.mjs"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-placing">
+            <a href="index.html"><img src="/assets/logo.png" alt="Logo image for WeatherWise" class="logo"></a>
+        </div>
+        <nav> 
+            <div class="hamburger-menu">
+                <button id="hamburger-button" aria-label="Menu button"><i class="fa-solid fa-bars"></i></button>
+                <div id="hamburger-content" class="hidden">
+                    <a href="/index.html">Home</a>
+                    <a href="/html/about-us.html">About Us</a>
+                    <a href="/html/contact-us.html">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="search-container">
+            <label for="search" aria-label="Searchfield"></label>
+            <input type="search" name="search" id="search" class="search-input">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+        <h1 class="heading">Contact us</h1>
+        <section class="first-section">
+            <div class="box1">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h2>Phone</h2>
+                <p>Our phone number: + 49 01 3238 92021</p>
+                <p>10:00-11:30  |  12:00-14:00</p>
+            </div>
+            <div class="box1">
+                <i class="fa-regular fa-envelope"></i>
+                <h2>E-mail</h2>
+                <p>Our e-mail address: </p>
+                <p>weatherwise@gmail.com</p>
+            </div>
+        </section>
+        <section class="second-section">
+            <div class="box1 box2">
+                <h2>Give us feedback!</h2>
+                <p>We appreciate your interest in WeatherWise. Please use this form to get in touch with us. Fill in the required information, and we will do our best to respond to you as quickly as possible.</p>
+                <h3>Contact form</h3>
+                <form method="GET">
+                    <div class="contact_form_group">
+                        <div class="customer_name_container contact_customer_name">
+                            <input type="text" name="firstname" placeholder="Full name*" class="contact_form">
+                        </div>
+                        <input type="email" name="email_contact" placeholder="E-mail*" class="contact_form">
+                        <textarea id="message" name="message" rows="4" cols="46" placeholder="What can we help you with?*" class="contact_form"></textarea>
+                        <div>
+                            <input type="submit" value="Submit" class="submit_button">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>&copy; WeatherWise</p>
+        <p>Weather data provided by Open-Meteo.</p>
+    </footer>
+</body>
+</html>

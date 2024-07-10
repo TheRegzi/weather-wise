@@ -1,0 +1,247 @@
+.logo {
+    width: 80px;
+    padding: 0.5em 1.3em;
+    align-items: center;
+}
+
+.logo-placing a {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+body {
+    background-image: url(/assets/background-img.jpg);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    text-align: center;
+}
+
+header {
+    background-color: #D7E2ED;
+    display: flex;
+    justify-content: space-between;
+    height: 6.5em;
+    align-items: center;
+}
+
+footer {
+    background-color: #2F3336;
+    color: #FFFFFF;
+    font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.7em;
+    font-weight: 400;
+    padding: 7em 4em;
+}
+
+footer p {
+    margin: 0;
+} 
+
+nav {
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+}
+
+#hamburger-content a {
+    padding-left: 1.5em;
+}
+
+.hamburger-menu button {
+    font-size: 40px;
+    height: 100%;
+    color: #000000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em;
+}
+
+.hamburger-menu a {
+    display: block;
+    padding: 0.6em;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+    position: absolute;
+    background-color: #D7E2ED;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    left: 0;
+    top: 103px;
+    width: 100%;
+    margin: 0em;
+    padding: 2em 0em;
+    z-index: 100;
+}
+
+.fa-solid.fa-magnifying-glass {
+    font-size: 1.5em;
+}
+
+.heading {
+    font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.6em;
+    font-weight: 650;
+    margin-top: 0.5em;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    padding-left: 1em;
+    
+}
+
+.background {
+    background-color: rgba(215, 226, 237, 0.3);
+    width: 90%;
+    height: 80%;
+    margin: 1em auto;
+    padding: 0.5em 0.5em;
+}
+
+.search-container {
+    margin: 0.5em;
+    text-align: right;
+}
+
+.search-input {
+    padding: 0.5em;
+    background-color: #EFFAFF;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    margin: 0em 0.3em;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 26px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.3em;
+    top: 15.9%;
+    transform: translateY(-50%);
+    color: #000000;
+    pointer-events: none;
+    font-size: 1.2em;
+}
+
+@media (min-width: 950px) {
+
+    .logo {
+        padding-left: 2.5em;
+    }
+}
+
+@media (min-width: 955px) {
+
+    
+    .hamburger-menu button {
+        display: none;
+    }
+    
+    .hamburger-menu a {
+        display: block;
+        font-size: 1.2em;
+    }
+
+    #hamburger-content {
+        display: flex;  
+        flex-direction: row;  
+        justify-content: center;
+        align-items: center;
+        width: 100%;  
+        box-shadow: none;  
+        position: static;  
+        padding: 1em 0;  
+        gap: 2em;
+        margin: 0 auto;
+    }
+
+    #hamburger-content a {
+        display: block;
+        padding-right: 2em;
+    }
+    
+    .hidden {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 1.2em 2em 0 0;
+        gap: 2.5em;
+    }
+    
+    .visible {
+        display: none;
+        padding: 0;
+    }
+
+    footer {
+        font-size: 0.7em;
+        padding: 7em 20em;
+    }
+
+    .background {
+        width: 900px;
+        padding: 1em;
+    }
+
+    .heading {
+        padding: 0;
+        font-size: 2em;
+        margin-left: 0.5em;
+    }
+
+    .search-container {
+        margin: 0.5em -1em;
+        text-align: right;
+    }
+
+    .search-input {
+        padding: 0.5em;
+        font-size: 1.2em;
+        margin-top: 0.2em;
+        width: 70px;
+        margin-right: 0;
+    }
+    
+    .search-icon {
+        position: relative;
+        right: 5%;
+        top: 13px;
+        font-size: 1.5em;
+    }
+}
+    
+
+@media (min-width: 950px) {
+
+    .logo {
+        padding-left: 2.5em;
+    }
+}

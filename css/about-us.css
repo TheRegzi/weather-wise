@@ -1,0 +1,39 @@
+.big-logo {
+    width: 85%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.about-text {
+    font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1em;
+    font-weight: 400;
+    text-align: left;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.image-2 {
+    width: 92%;
+    height: 210px;
+    object-fit: cover;
+    margin-bottom: 3em;
+}
+
+@media (min-width: 955px) {
+
+    main {
+        width: 955px;
+        margin: 0 auto;
+    }
+
+    .big-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .image-2 {
+        width: 930px;
+    }
+
+
+}
