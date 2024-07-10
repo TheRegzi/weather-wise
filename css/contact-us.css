@@ -32,6 +32,8 @@
 
 .box1 p {
     font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
     margin: 0;
 }
 
