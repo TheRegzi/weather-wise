@@ -33,12 +33,13 @@ async function fetchSearchResults(query) {
 }
 
 
+
 function displaySearchResults(results) {
     const resultsDiv = document.getElementById('searchResults');
     resultsDiv.innerHTML = ''; 
     results.forEach(result => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="/html/single-place-weather.html?latitude=${result.latitude}&longitude=${result.longitude}">${result.name}</a>`;
+        listItem.innerHTML = `<a href="/html/single-place-weather.html?name=${encodeURIComponent(result.name)}&latitude=${result.latitude}&longitude=${result.longitude}">${result.name}</a>`;
         resultsDiv.appendChild(listItem);
     });
 }
