@@ -1,3 +1,24 @@
+.temperature {
+    font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0 auto;
+    padding-right: 0;
+}
+
+.now {
+    color: #424343;
+}
+
+.degree {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.feels-like {
+
+}
+
+
+
 @media (min-width: 955px) {
 
     main {
