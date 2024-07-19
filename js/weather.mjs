@@ -43,8 +43,12 @@ function displayWeather(data) {
 
 
 async function handleWeatherDetails() {
+    const name = getQueryParam('name');
     const latitude = getQueryParam('latitude');
     const longitude = getQueryParam('longitude');
+    if (name) {
+        document.getElementById('placeName').textContent = name;
+    }
     if (latitude && longitude) {
         const weatherData = await fetchWeatherData(latitude, longitude);
         if (weatherData) {

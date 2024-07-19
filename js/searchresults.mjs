@@ -3,9 +3,9 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-// Function to fetch search results using OpenCage Geocoding API
+
 async function fetchSearchResults(query) {
-    const apiKey = '24b6eadf4f294689822c749ae70ba115'; // Replace with your OpenCage API key
+    const apiKey = '24b6eadf4f294689822c749ae70ba115'; 
     const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(query)}&key=${apiKey}&limit=5`;
 
     try {
