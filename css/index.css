@@ -24,6 +24,25 @@ input::placeholder {
     color: #4F4F4F;
 }
 
+#searchForm {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#searchButton {
+    background-color: #2F3336;
+    color: #ffffff;
+    width: 100px;
+    margin: 1.5em auto;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    border-radius: 40px;
+    border: none;
+    padding: 0.5em 1em;
+}
+
 #weather-nearby {
     background-color: rgba(215, 226, 237, 0.6);
     width: 300px;
@@ -45,6 +64,13 @@ input::placeholder {
    
     input {
         width: 700px;
+    }
+
+    #searchForm {
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+        margin: 0 auto;
     }
 
     #weather-nearby {
