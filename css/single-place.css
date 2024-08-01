@@ -10,16 +10,19 @@
     justify-content: space-between;
     align-items: center;
     padding: 1em 0;
+    gap: 1em;
 }
 
 .temperature {
     font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
     flex-direction: row;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .now {
     color: #424343;
     flex-direction: row;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .degree {
@@ -29,11 +32,11 @@
 
 .topDetails {
     font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .topIcons {
     font-size: 1.2em;
-
 }
 
 .timesofday {
@@ -56,20 +59,27 @@
     font-size: 1.1em;
     text-align: left;
     margin-left: 0.5em;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .temperatures {
     font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
     text-align: left;
-    margin-left: 0.5em;
+    margin: 0 0 0 0.5em;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .numbers {
     display: flex;
-    flex-direction: row;
-    gap: 2em;
-    margin-left: 0.5em;
+    flex-direction: column;
+    text-align: left;
     font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    color: #6B6F72;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.wind-rain {
+    margin: 0.5em 0 0 0.5em;
 }
 
 

@@ -1,7 +1,4 @@
 
-const latitude = getQueryParam('latitude');
-const longitude = getQueryParam('longitude');
-
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
@@ -33,34 +30,34 @@ async function fetchWeatherData(latitude, longitude) {
 }
 
 const weatherCodeMap = {
-    0: 'Clear sky',
-    1: 'Mainly clear',
-    2: 'Partly cloudy',
-    3: 'Overcast',
-    45: 'Fog',
-    48: 'Depositing rime fog',
-    51: 'Drizzle: Light',
-    53: 'Drizzle: Moderate',
-    55: 'Drizzle: Dense',
-    56: 'Freezing Drizzle: Light',
-    57: 'Freezing Drizzle: Dense',
-    61: 'Rain: Slight',
-    63: 'Rain: Moderate',
-    65: 'Rain: Heavy',
-    66: 'Freezing Rain: Light',
-    67: 'Freezing Rain: Heavy',
-    71: 'Snowfall: Slight',
-    73: 'Snowfall: Moderate',
-    75: 'Snowfall: Heavy',
-    77: 'Snow grains',
-    80: 'Rain showers: Slight',
-    81: 'Rain showers: Moderate',
-    82: 'Rain showers: Violent',
-    85: 'Snow showers: Slight',
-    86: 'Snow showers: Heavy',
-    95: 'Thunderstorm: Slight or moderate',
-    96: 'Thunderstorm with slight hail',
-    99: 'Thunderstorm with heavy hail'
+    0: { description: 'Clear sky', image: '/assets/brightness_9253338.png' },
+    1: { description: 'Mainly clear', image: '/assets/cloud-sun_7407060.png' },
+    2: { description: 'Partly cloudy', image: '/assets/clouds-sun_7407066.png' },
+    3: { description: 'Overcast', image: '/assets/smoke_7407108.png' },
+    45: { description: 'Fog', image: '/assets/smog_7434820.png.png' },
+    48: { description: 'Depositing rime fog', image: 'rime_fog.png' },
+    51: { description: 'Drizzle: Light', image: 'light_drizzle.png' },
+    53: { description: 'Drizzle: Moderate', image: 'moderate_drizzle.png' },
+    55: { description: 'Drizzle: Dense', image: 'dense_drizzle.png' },
+    56: { description: 'Freezing Drizzle: Light', image: 'freezing_light_drizzle.png' },
+    57: { description: 'Freezing Drizzle: Dense', image: 'freezing_dense_drizzle.png' },
+    61: { description: 'Rain: Slight', image: 'slight_rain.png' },
+    63: { description: 'Rain: Moderate', image: '/assets/cloud-rain_7407041.png' },
+    65: { description: 'Rain: Heavy', image: 'heavy_rain.png' },
+    66: { description: 'Freezing Rain: Light', image: 'freezing_light_rain.png' },
+    67: { description: 'Freezing Rain: Heavy', image: 'freezing_heavy_rain.png' },
+    71: { description: 'Snowfall: Slight', image: 'slight_snowfall.png' },
+    73: { description: 'Snowfall: Moderate', image: 'moderate_snowfall.png' },
+    75: { description: 'Snowfall: Heavy', image: 'heavy_snowfall.png' },
+    77: { description: 'Snow grains', image: 'snow_grains.png' },
+    80: { description: 'Rain showers: Slight', image: 'slight_rain_showers.png' },
+    81: { description: 'Rain showers: Moderate', image: 'moderate_rain_showers.png' },
+    82: { description: 'Rain showers: Violent', image: '/assets/cloud-showers_7407048.png' },
+    85: { description: 'Snow showers: Slight', image: 'slight_snow_showers.png' },
+    86: { description: 'Snow showers: Heavy', image: 'heavy_snow_showers.png' },
+    95: { description: 'Thunderstorm: Slight or moderate', image: 'slight_thunderstorm.png' },
+    96: { description: 'Thunderstorm with slight hail', image: 'slight_hail_thunderstorm.png' },
+    99: { description: 'Thunderstorm with heavy hail', image: 'heavy_hail_thunderstorm.png' }
 };
 
 
@@ -68,13 +65,11 @@ const weatherCodeMap = {
 function displayDetails(data) {
     const weatherDiv = document.getElementById('essentialDetails');
     const hourlyData = data.hourly || {};
-    
     const currentTemperature = hourlyData.temperature_2m ? hourlyData.temperature_2m[0] : 'N/A'; 
     const windSpeed = hourlyData.wind_speed_10m ? hourlyData.wind_speed_10m[0] : 'N/A'; 
     const rain = hourlyData.rain ? hourlyData.rain[0] : 'N/A'; 
     const snowfall = hourlyData.snowfall ? hourlyData.snowfall[0] : 'N/A';
-    const weatherCode = hourlyData.weathercode ? hourlyData.weathercode[0] : 'N/A'; 
-    const weatherDescription = weatherCodeMap[weatherCode] || 'Unknown';
+    
 
     
     let weatherHtml = `
@@ -178,15 +173,19 @@ function displayWeatherSummaries(dailySummaries) {
     let weatherHtml = '';
     next7DaysSummaries.forEach(summary => {
         const formattedDate = formatDate(summary.date); 
+        const weatherData = weatherCodeMap[summary.predominantWeatherCode] || { description: 'Unknown', image: 'default.png' };
+        const weatherDescription = weatherData.description;
+        const weatherImage = weatherData.image;
+
         weatherHtml += `
             <div class="weather-summary">
                 <h2 class="date">${formattedDate}</h2>
-                <p class="temperatures">Max ${summary.maxTemperature}°C/ Min ${summary.minTemperature}°C</p>
+                <img src="${weatherImage}" alt="${weatherDescription}" />
+                <p class="temperatures">${summary.maxTemperature}° / ${summary.minTemperature}°</p>
                 <div class="numbers">
-                    <p><i class="fa-solid fa-wind"></i> ${summary.avgWindSpeed} km/h</p>
-                    <p><i class="fa-solid fa-umbrella"></i> ${summary.totalRain} mm</p>
+                    <p class="wind-rain"><i class="fa-solid fa-wind"></i> ${summary.avgWindSpeed} km/h</p>
+                    <p class="wind-rain"><i class="fa-solid fa-umbrella"></i> ${summary.totalRain} mm</p>
                 </div>
-                <p>Predominant Weather: ${weatherCodeMap[summary.predominantWeatherCode] || 'Unknown'}</p>
             </div>
         `;
     });
