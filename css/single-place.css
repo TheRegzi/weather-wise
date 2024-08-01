@@ -51,6 +51,29 @@
     margin: 0 auto;
 }
 
+.date {
+    font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1em;
+    text-align: left;
+    margin-left: 0.5em;
+}
+
+.temperatures {
+    font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+    margin-left: 0.5em;
+}
+
+.numbers {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-left: 0.5em;
+    font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
 
 
 @media (min-width: 955px) {

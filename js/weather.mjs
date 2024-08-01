@@ -73,7 +73,6 @@ function displayDetails(data) {
     const windSpeed = hourlyData.wind_speed_10m ? hourlyData.wind_speed_10m[0] : 'N/A'; 
     const rain = hourlyData.rain ? hourlyData.rain[0] : 'N/A'; 
     const snowfall = hourlyData.snowfall ? hourlyData.snowfall[0] : 'N/A';
-    const screenWidth = window.innerWidth;
     const weatherCode = hourlyData.weathercode ? hourlyData.weathercode[0] : 'N/A'; 
     const weatherDescription = weatherCodeMap[weatherCode] || 'Unknown';
 
@@ -86,7 +85,7 @@ function displayDetails(data) {
         </div>
         <div class="topDetails">
             <span class="topIcons"><i class="fa-solid fa-wind"></i></span> 
-            <span class="wind-degree">${windSpeed} m/s</span>
+            <span class="wind-degree">${windSpeed} km/h</span>
         </div>
         <div class="topDetails">
             <span class="topIcons"><i class="fa-solid fa-umbrella"></i></span> 
@@ -99,41 +98,121 @@ function displayDetails(data) {
     </div>
     `;
 
-   
-
     weatherDiv.innerHTML = weatherHtml;
 }
 
-function displayWeather(data) {
-    const essentialDiv = document.getElementById('weatherDetails');
-    const hourlyData = data.hourly || {};
-    const currentTemperature = hourlyData.temperature_2m ? hourlyData.temperature_2m[0] : 'N/A';
-    const windSpeed = hourlyData.wind_speed_10m ? hourlyData.wind_speed_10m[0] : 'N/A';
-    const rain = hourlyData.rain ? hourlyData.rain[0] : 'N/A';
-    const snowfall = hourlyData.snowfall ? hourlyData.snowfall[0] : 'N/A';
 
-    essentialDiv.innerHTML = `
-        <p>Now: ${currentTemperature}°C</p>
-        <p>Wind Speed: ${windSpeed} m/s</p>
-        <p>Rain: ${rain} mm</p>
-        <p>Snowfall: ${snowfall} cm</p>
-    `;
+function groupByDay(hourlyData) {
+    const dailyData = {};
+  
+    hourlyData.time.forEach((timestamp, index) => {
+      const date = timestamp.split('T')[0]; 
+  
+      if (!dailyData[date]) {
+        dailyData[date] = {
+          temperatures: [],
+          windSpeeds: [],
+          rain: [],
+          snowfall: [],
+          weatherCodes: []
+        };
+      }
+  
+      dailyData[date].temperatures.push(hourlyData.temperature_2m[index]);
+      dailyData[date].windSpeeds.push(hourlyData.wind_speed_10m[index]);
+      dailyData[date].rain.push(hourlyData.rain[index]);
+      dailyData[date].snowfall.push(hourlyData.snowfall[index]);
+      dailyData[date].weatherCodes.push(hourlyData.weathercode[index]);
+    });
+  
+    return dailyData;
+  }
+  
+
+  function calculateDailySummaries(dailyData) {
+    const dailySummaries = [];
+  
+    for (const [date, data] of Object.entries(dailyData)) {
+      const dailySummary = {
+        date: date,
+        minTemperature: Math.min(...data.temperatures),
+        maxTemperature: Math.max(...data.temperatures),
+        avgWindSpeed: (data.windSpeeds.reduce((a, b) => a + b, 0) / data.windSpeeds.length).toFixed(2),
+        totalRain: data.rain.reduce((a, b) => a + b, 0).toFixed(2),
+        totalSnowfall: data.snowfall.reduce((a, b) => a + b, 0).toFixed(2),
+        predominantWeatherCode: mode(data.weatherCodes)
+      };
+  
+      dailySummaries.push(dailySummary);
+    }
+  
+    return dailySummaries;
+  }
+  
+  function mode(arr) {
+    return arr.sort((a, b) =>
+      arr.filter(v => v === a).length - arr.filter(v => v === b).length
+    ).pop();
+  }
+  
+ 
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const today = new Date().toISOString().split('T')[0];
+  
+    if (dateStr === today) {
+        return `Today ${date.toLocaleDateString('en-US', { day: 'numeric', month: 'long' })}`;
+    }
+
+    return date.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' });
+}
+
+function displayWeatherSummaries(dailySummaries) {
+    const essentialDiv = document.getElementById('weatherDetails');
+    const today = new Date().toISOString().split('T')[0];
+
+    const todayIndex = dailySummaries.findIndex(summary => summary.date === today);
+
+    const next7DaysSummaries = dailySummaries.slice(todayIndex, todayIndex + 7);
+
+    let weatherHtml = '';
+    next7DaysSummaries.forEach(summary => {
+        const formattedDate = formatDate(summary.date); 
+        weatherHtml += `
+            <div class="weather-summary">
+                <h2 class="date">${formattedDate}</h2>
+                <p class="temperatures">Max ${summary.maxTemperature}°C/ Min ${summary.minTemperature}°C</p>
+                <div class="numbers">
+                    <p><i class="fa-solid fa-wind"></i> ${summary.avgWindSpeed} km/h</p>
+                    <p><i class="fa-solid fa-umbrella"></i> ${summary.totalRain} mm</p>
+                </div>
+                <p>Predominant Weather: ${weatherCodeMap[summary.predominantWeatherCode] || 'Unknown'}</p>
+            </div>
+        `;
+    });
+
+    essentialDiv.innerHTML = weatherHtml;
 }
 
 async function handleWeatherDetails() {
+    const latitude = getQueryParam('latitude');
+    const longitude = getQueryParam('longitude');
     const name = getQueryParam('name');
 
     if (name) {
         document.getElementById('placeName').innerHTML = `<i class="fa-solid fa-location-dot"></i> ` + name;
     }
+
     if (latitude && longitude) {
         const weatherData = await fetchWeatherData(latitude, longitude);
         if (weatherData) {
+            const hourlyData = weatherData.hourly || {};
+            const dailyData = groupByDay(hourlyData);
+            const dailySummaries = calculateDailySummaries(dailyData);
             displayDetails(weatherData);
-            displayWeather(weatherData);
+            displayWeatherSummaries(dailySummaries);
         }
     }
 }
-
 
 handleWeatherDetails();
