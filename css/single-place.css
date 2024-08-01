@@ -1,20 +1,54 @@
+.heading {
+    margin-left: 0;
+}
+
+.topofpage {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0;
+}
+
 .temperature {
     font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0 auto;
-    padding-right: 0;
+    flex-direction: row;
 }
 
 .now {
     color: #424343;
+    flex-direction: row;
 }
 
 .degree {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 700;
 }
 
-.feels-like {
+.topDetails {
+    font-family: 'Open sans', Verdana, Geneva, Tahoma, sans-serif;
+}
 
+.topIcons {
+    font-size: 1.2em;
+
+}
+
+.timesofday {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10%;
+    font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    color: #4F4F4F;
+    margin-right: 5%;
+}
+
+.background {
+    margin: 0 auto;
 }
 
 
@@ -26,7 +60,18 @@
         margin: 0 auto;
     }
 
+    .topofpage {
+        width: 100%;
+    }
+
+    .background {
+        width: 100%;
+        margin: 0;
+        padding: 1em 0;
+    }
+
+    .timesofday {
+        margin-right: 0;
+    }
     
-
-
 }
