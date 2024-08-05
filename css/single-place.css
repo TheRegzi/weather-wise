@@ -83,8 +83,19 @@
 }
 
 
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
+.weather-flex {
+    margin-right: 0;
+}
 
+.weather-img {
+    width: 55px;
+}
 
 @media (min-width: 955px) {
 
