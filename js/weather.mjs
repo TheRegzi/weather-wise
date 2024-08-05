@@ -65,11 +65,13 @@ const weatherCodeMap = {
 function displayDetails(data) {
     const weatherDiv = document.getElementById('essentialDetails');
     const hourlyData = data.hourly || {};
-    const currentTemperature = hourlyData.temperature_2m ? hourlyData.temperature_2m[0] : 'N/A'; 
-    const windSpeed = hourlyData.wind_speed_10m ? hourlyData.wind_speed_10m[0] : 'N/A'; 
-    const rain = hourlyData.rain ? hourlyData.rain[0] : 'N/A'; 
-    const snowfall = hourlyData.snowfall ? hourlyData.snowfall[0] : 'N/A';
-    
+
+    const currentTime = new Date().toISOString();
+    const timeIndex = hourlyData.time.findIndex(time => time === currentTime.slice(0, 13) + ':00');
+    const currentTemperature = (timeIndex !== -1 && hourlyData.temperature_2m) ? hourlyData.temperature_2m[timeIndex] : 'N/A'; 
+    const windSpeed = (timeIndex !== -1 && hourlyData.wind_speed_10m) ? hourlyData.wind_speed_10m[timeIndex] : 'N/A'; 
+    const rain = (timeIndex !== -1 && hourlyData.rain) ? hourlyData.rain[timeIndex] : 'N/A'; 
+    const snowfall = (timeIndex !== -1 && hourlyData.snowfall) ? hourlyData.snowfall[timeIndex] : 'N/A';
 
     
     let weatherHtml = `
