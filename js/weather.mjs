@@ -183,8 +183,7 @@ function displayWeatherSummaries(dailySummaries) {
             <div class="weather-summary">
                 <h2 class="date">${formattedDate}</h2>
                 <div class="flex">
-                <div>
-                <p class="temperatures">${summary.maxTemperature}° / ${summary.minTemperature}°</p>
+                <div><p class="temperatures">${summary.maxTemperature}° / ${summary.minTemperature}°</p>
                 <div class="numbers">
                     <p class="wind-rain"><i class="fa-solid fa-wind"></i> ${summary.avgWindSpeed} km/h</p>
                     <p class="wind-rain"><i class="fa-solid fa-umbrella"></i> ${summary.totalRain} mm</p>
@@ -192,6 +191,7 @@ function displayWeatherSummaries(dailySummaries) {
                 </div>
                 <div class="weather-flex"><img class="weather-img" src="${weatherImage}" alt="${weatherDescription}" /></div>
             </div>
+            <hr class="line">
             </div>
         `;
     });

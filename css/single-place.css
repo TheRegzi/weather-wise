@@ -97,6 +97,12 @@
     width: 55px;
 }
 
+.line {
+    width: 98%;
+    border-bottom: 0.5px solid #939393;
+    margin-top: 1em;
+}
+
 @media (min-width: 955px) {
 
     main {
