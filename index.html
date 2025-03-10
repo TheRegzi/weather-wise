@@ -5,47 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Wise</title>
     <link rel="icon" href="favicon/favicon.ico">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/index.css">
     <script src="https://kit.fontawesome.com/878e5c0278.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<script type="module" src="js/index.mjs"></script>
-<script type="module" src="js/home.mjs"></script>
 </head>
 <body>
-    <header>
-        <div class="logo-placing">
-            <a href="index.html"><img src="assets/logo.png" alt="Logo image for WeatherWise" class="logo"></a>
-        </div>
-        <nav> 
-            <div class="hamburger-menu">
-                <button id="hamburger-button" aria-label="Menu button"><i class="fa-solid fa-bars"></i></button>
-                <div id="hamburger-content" class="hidden">
-                    <a href="index.html">Home</a>
-                    <a href="html/about-us.html">About Us</a>
-                    <a href="html/contact-us.html">Contact Us</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <h1>Welcome to WeatherWise!</h1>
-        <form id="searchForm">
-            <label for="search" aria-label="Searchfield"></label>
-            <input type="search" name="search" id="search" placeholder="Search for a place...">
-            <button type="submit" id="searchButton">Search</button>
-        </form>
-        <section id="weather-nearby">
-
-        </section>
-
-    </main>
-    <footer>
-        <p>&copy; WeatherWise</p>
-        <p>Weather data provided by Open-Meteo.</p>
-    </footer>
+    <div id="root"></div>
 </body>
 </html>
