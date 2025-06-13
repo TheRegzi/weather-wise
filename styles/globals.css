@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Open Sans", Helvetica, sans-serif;
+  --font-roboto: "Roboto", Arial, sans-serif;
+  --font-inter: "Inter", Arial, sans-serif;
+  --color-background: #D7E2ED;
+  --color-footer: #2F3336;
+  --color-search: #4F4F4F;
+  --color-searchbar: #EFFAFF;
+  --color-background-secondary: #D7E2ED;
+  --text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+body {
+  background-image: url('/assets/background-img.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
