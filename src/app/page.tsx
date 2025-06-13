@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import SearchInput from "@/components/Searchbar";
+import { useState } from 'react';
+import SearchInput from '@/components/Searchbar';
 
 export default function HomePage() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setQuery(e.target.value);
@@ -20,11 +20,8 @@ export default function HomePage() {
       <h1 className="font-inter font-semibold text-3xl text-shadow">Welcome to WeatherWise!</h1>
       <SearchInput value={query} onChange={handleChange} onSubmit={handleSubmit} />
       <div className="flex flex-col items-center justify-center mt-8 bg-background-secondary">
-<h2>
-  Place
-</h2>
+        <h2>Place here</h2>
       </div>
     </main>
   );
 }
-
