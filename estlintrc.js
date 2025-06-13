@@ -18,7 +18,5 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
-  rules: {
-    // Add custom rules here
-  },
+  rules: {},
 };
