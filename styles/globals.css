@@ -1,15 +1,15 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-display: "Open Sans", Helvetica, sans-serif;
-  --font-roboto: "Roboto", Arial, sans-serif;
-  --font-inter: "Inter", Arial, sans-serif;
-  --color-background: #D7E2ED;
-  --color-footer: #2F3336;
-  --color-search: #4F4F4F;
-  --color-searchbar: #EFFAFF;
-  --color-background-secondary: #D7E2ED;
-  --text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  --font-display: 'Open Sans', Helvetica, sans-serif;
+  --font-roboto: 'Roboto', Arial, sans-serif;
+  --font-inter: 'Inter', Arial, sans-serif;
+  --color-background: #d7e2ed;
+  --color-footer: #2f3336;
+  --color-search: #4f4f4f;
+  --color-searchbar: #effaff;
+  --color-background-secondary: rgba(215, 226, 237, 0.6);
+  --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 body {
