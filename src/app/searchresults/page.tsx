@@ -72,7 +72,7 @@ export default function SearchResultsPage() {
             ))}
           </ul>
         ) : (
-          <p className="mt-3 text-gray-500">No places found.</p>
+          <p className="my-3 text-footer text-lg font-semibold">No places found.</p>
         )}
       </div>
     </div>
