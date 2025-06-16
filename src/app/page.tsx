@@ -27,7 +27,7 @@ export default function HomePage() {
             <p className="font-display text-3xl font-semibold text-left">
               <FontAwesomeIcon icon={faLocationDot} className="text-footer w-4 h-4" /> Place here
             </p>
-            <p>Now</p>
+            <p className="text-search font-display text-xl">Now</p>
           </div>
         </div>
       </div>
