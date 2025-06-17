@@ -97,18 +97,21 @@ export default function HomePage() {
   }
 
   return (
-    <main className="flex flex-col justify-center w-full h-full lg:w-[1200px] lg:h-[800px] mx-auto p-8">
+    <main className="flex flex-col justify-center w-full xl:w-[1200px] h-[800px] mx-auto p-8">
       <h1 className="font-inter font-semibold text-3xl text-shadow">Welcome to WeatherWise!</h1>
       <SearchInput value={query} onChange={handleChange} onSubmit={handleSubmit} />
       <div className="flex flex-col justify-center items-center mt-8 bg-background-secondary bg-opacity-90 p-7">
-        <div className="flex w-[700px] justify-center">
+        <div className="flex w-full md:w-[700px] justify-center">
           <div className="flex flex-row justify-between items-center w-[700px]">
             <p className="font-display text-shadow text-3xl font-semibold text-left flex items-center">
               <FontAwesomeIcon icon={faLocationDot} className="text-footer w-4 h-4 mr-2" />
               {OSLO.name}, {OSLO.country}
             </p>
             <p className="text-search font-display text-xl">
-              Now <span className="text-4xl font-bold text-shadow">{today?.temperature}°</span>
+              Now{' '}
+              <span className="text-4xl font-bold text-shadow text-black">
+                {today?.temperature}°
+              </span>
             </p>
           </div>
         </div>
