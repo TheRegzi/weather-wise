@@ -99,9 +99,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col justify-center w-full h-full lg:w-[1200px] lg:h-[800px] mx-auto p-8">
       <h1 className="font-inter font-semibold text-3xl text-shadow">Welcome to WeatherWise!</h1>
-
       <SearchInput value={query} onChange={handleChange} onSubmit={handleSubmit} />
-
       <div className="flex flex-col justify-center items-center mt-8 bg-background-secondary bg-opacity-90 p-7">
         <div className="flex w-[700px] justify-center">
           <div className="flex flex-row justify-between items-center w-[700px]">
@@ -114,12 +112,11 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-
         <div className="mt-6 text-xl font-display text-left w-[700px]">
           {weather && today && daily ? (
             <div>
               {/* Today */}
-              <div className="flex flex-row gap-8 justify-between items-center border-b pb-1">
+              <div className="flex flex-row gap-8 justify-between items-center border-b border-[#939393] pb-1">
                 <p>Today</p>
                 <p>{today.temperature}°C</p>
                 {todayWeatherData && (
@@ -132,12 +129,11 @@ export default function HomePage() {
                   />
                 )}
               </div>
-
               {/* Next 3 days */}
               {daySummaries.map((summary, index) => (
                 <div
                   key={`${summary.name}-${index}`}
-                  className="flex flex-row gap-8 justify-between items-center border-b pb-1 mt-4"
+                  className="flex flex-row gap-8 justify-between items-center border-b border-[#939393] pb-1 mt-4"
                 >
                   <p>{summary.name}</p>
                   <p>
