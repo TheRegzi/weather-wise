@@ -103,22 +103,22 @@ export default function HomePage() {
       <div className="flex flex-col justify-center items-center mt-8 bg-background-secondary bg-opacity-90 p-7">
         <div className="flex w-[700px] justify-center">
           <div className="flex flex-row justify-between items-center w-[700px]">
-            <p className="font-display text-3xl font-semibold text-left flex items-center">
+            <p className="font-display text-shadow text-3xl font-semibold text-left flex items-center">
               <FontAwesomeIcon icon={faLocationDot} className="text-footer w-4 h-4 mr-2" />
               {OSLO.name}, {OSLO.country}
             </p>
             <p className="text-search font-display text-xl">
-              Now <span className="text-2xl font-bold">{today?.temperature}°</span>
+              Now <span className="text-4xl font-bold text-shadow">{today?.temperature}°</span>
             </p>
           </div>
         </div>
-        <div className="mt-6 text-xl font-display text-left w-[700px]">
+        <div className="mt-6 text-xl font-display text-shadow text-left w-[700px]">
           {weather && today && daily ? (
             <div>
               {/* Today */}
               <div className="flex flex-row gap-8 justify-between items-center border-b border-[#939393] pb-1">
-                <p>Today</p>
-                <p>{today.temperature}°C</p>
+                <p className="w-12">Today</p>
+                <p className="flex-1 text-center">{today.temperature}°C</p>
                 {todayWeatherData && (
                   <Image
                     src={todayWeatherData.image}
@@ -135,8 +135,8 @@ export default function HomePage() {
                   key={`${summary.name}-${index}`}
                   className="flex flex-row gap-8 justify-between items-center border-b border-[#939393] pb-1 mt-4"
                 >
-                  <p>{summary.name}</p>
-                  <p>
+                  <p className="w-12">{summary.name}</p>
+                  <p className="flex-1 text-center">
                     {summary.tempMin}°C – {summary.tempMax}°C
                   </p>
                   {summary.weatherData && (
