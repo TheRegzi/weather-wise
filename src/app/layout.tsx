@@ -1,26 +1,20 @@
-import type { Metadata } from "next";
-import "../../styles/globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import type { Metadata } from 'next';
+import '../../styles/globals.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: "Weather Wise",
-  description: "Your most reliable weather app",
-  icons: [
-    { rel: "icon", url: "/favicon/favicon.ico" },
-  ],
+  title: 'Weather Wise',
+  description: 'Your most reliable weather app',
+  icons: [{ rel: 'icon', url: '/favicon/favicon.ico' }],
 };
 
 export const viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -34,9 +28,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased flex flex-col bg-white min-h-screen">
         <Header />
-        <main className="flex-1">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
