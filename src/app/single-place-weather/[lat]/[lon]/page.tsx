@@ -63,11 +63,10 @@ export default function SinglePlaceWeather() {
   return (
     <div className="p-8 flex flex-col mx-auto w-[1000px]">
       <h1 className="text-3xl font-bold mb-4">Weather for {name ? name : `${lat}, ${lon}`}</h1>
-      <div className="flex flex-row gap-4 justify-between">
+      <div className="flex flex-row gap-4 justify-between items-center my-8">
         <h2>The weather now</h2>
         <p className="text-3xl font-semibold">
-          <FontAwesomeIcon className="text-3xl" icon={faTemperatureHigh} />
-          {currentTemperature}°C
+          <FontAwesomeIcon className="text-3xl" icon={faTemperatureHigh} /> {currentTemperature}°C
         </p>
         {snowfall ? (
           <p>
@@ -79,8 +78,7 @@ export default function SinglePlaceWeather() {
           </p>
         )}
         <p>
-          <FontAwesomeIcon className="text-3xl" icon={faWind} />
-          {windSpeed} m/s
+          <FontAwesomeIcon className="text-3xl" icon={faWind} /> {windSpeed} m/s
         </p>
       </div>
     </div>
