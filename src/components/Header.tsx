@@ -30,10 +30,9 @@ export default function Header() {
         >
           <FontAwesomeIcon icon={faBars} />
         </button>
-
         {/* Desktop nav */}
         <nav className="hidden md:block">
-          <ul className="flex gap-2 md:gap-10 text-decoration-none text-black font-roboto text-xl font-medium">
+          <ul className="flex gap-20 text-decoration-none text-black font-roboto text-xl font-medium">
             <li>
               <Link href="/" className="hover:text-blue-700">
                 Home
@@ -52,11 +51,10 @@ export default function Header() {
           </ul>
         </nav>
       </header>
-
       {/* Mobile nav */}
       {isOpen && (
-        <nav className="fixed z-50 top-24 left-0 right-0 md:hidden bg-background shadow-lg px-8 py-4">
-          <ul className="flex flex-col gap-5 font-roboto text-xl font-medium">
+        <nav className="fixed z-50 top-24 sm:top-32 left-0 right-0 md:hidden bg-background shadow-lg px-8 py-4">
+          <ul className="flex flex-col gap-5 font-roboto text-xl font-medium my-7">
             <li>
               <Link href="/" className="hover:text-blue-700" onClick={() => setIsOpen(false)}>
                 Home
