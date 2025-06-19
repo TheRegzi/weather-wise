@@ -10,9 +10,11 @@ import {
   faSnowflake,
   faWind,
 } from '@fortawesome/free-solid-svg-icons';
+import { weatherCodeMap } from '@/utils/weatherCodeMap';
+import Image from 'next/image';
 
 async function fetchWeatherData(latitude, longitude) {
-  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,wind_speed_10m,rain,snowfall,weathercode`;
+  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,wind_speed_10m,weathercode,rain,snowfall&forecast_days=10&timezone=auto`;
   try {
     const response = await fetch(apiUrl);
     if (!response.ok) {
@@ -25,6 +27,61 @@ async function fetchWeatherData(latitude, longitude) {
   }
 }
 
+function getPeriod(hour) {
+  if (hour >= 0 && hour < 6) return 'night';
+  if (hour >= 6 && hour < 18) return 'day';
+  return 'evening'; // 18–23
+}
+
+function build10DayPeriods(hourly) {
+  const result = [];
+  const byDate = {};
+
+  for (let i = 0; i < hourly.time.length; i++) {
+    const dateTime = new Date(hourly.time[i]);
+    const dateStr = dateTime.toISOString().slice(0, 10);
+    const hour = dateTime.getHours();
+    const period = getPeriod(hour);
+
+    if (!byDate[dateStr]) {
+      byDate[dateStr] = { night: [], day: [], evening: [] };
+    }
+    byDate[dateStr][period].push({
+      temp: hourly.temperature_2m[i],
+      wind: hourly.wind_speed_10m[i],
+      weathercode: hourly.weathercode[i],
+      rain: hourly.rain[i],
+      snowfall: hourly.snowfall[i],
+    });
+  }
+
+  for (const date of Object.keys(byDate).slice(0, 10)) {
+    const weekday = new Date(date).toLocaleDateString('en-US', { weekday: 'long' });
+    const dayObj = { date, weekday };
+
+    for (const period of ['night', 'day', 'evening']) {
+      const arr = byDate[date][period];
+      dayObj[period] = arr.length
+        ? {
+            degrees: Math.round(arr.reduce((sum, a) => sum + a.temp, 0) / arr.length),
+            windSpeed: Math.round(arr.reduce((sum, a) => sum + a.wind, 0) / arr.length),
+            weathercode: arr[0]?.weathercode,
+            rain: Math.round((arr.reduce((sum, a) => sum + a.rain, 0) / arr.length) * 10) / 10,
+            snowfall:
+              Math.round((arr.reduce((sum, a) => sum + a.snowfall, 0) / arr.length) * 10) / 10,
+          }
+        : null;
+    }
+    // Calculate daily min/max temp (could also add min/max rain and snowfall if you wanted)
+    const allTemps = [].concat(...Object.values(byDate[date]).map((arr) => arr.map((x) => x.temp)));
+    dayObj.tempMin = Math.min(...allTemps).toFixed(1);
+    dayObj.tempMax = Math.max(...allTemps).toFixed(1);
+
+    result.push(dayObj);
+  }
+  return result;
+}
+
 export default function SinglePlaceWeather() {
   const params = useParams() as { lat: string; lon: string };
   const searchParams = useSearchParams();
@@ -33,10 +90,16 @@ export default function SinglePlaceWeather() {
   const name = searchParams.get('name');
 
   const [weatherData, setWeatherData] = useState(null);
+  const [forecast, setForecast] = useState([]);
 
   useEffect(() => {
     if (lat && lon) {
-      fetchWeatherData(lat, lon).then((data) => setWeatherData(data));
+      fetchWeatherData(lat, lon).then((data) => {
+        setWeatherData(data);
+        if (data?.hourly) {
+          setForecast(build10DayPeriods(data.hourly));
+        }
+      });
     }
   }, [lat, lon]);
 
@@ -83,6 +146,69 @@ export default function SinglePlaceWeather() {
         <p className="text-xl font-semibold text-shadow">
           <FontAwesomeIcon className="text-3xl" icon={faWind} /> {windSpeed} m/s
         </p>
+      </div>
+      <div className="space-y-4 mt-8">
+        {forecast.map((day) => (
+          <div key={day.date} className="flex flex-row border-b pb-2 gap-8 items-center">
+            {/* LEFT: Date and numbers */}
+            <div className="w-48">
+              <div className="font-bold">{day.weekday}</div>
+              <div className="text-sm text-gray-500">{day.date}</div>
+              <div className="mt-2">
+                <div>
+                  {' '}
+                  {day.tempMin}°C / {day.tempMax}°C
+                </div>
+                <div>
+                  {' '}
+                  {[day.night?.windSpeed, day.day?.windSpeed, day.evening?.windSpeed]
+                    .filter(Boolean)
+                    .map((w, i) => (
+                      <span key={i}>
+                        {w}m/s{i < 2 ? ' / ' : ''}
+                      </span>
+                    ))}
+                </div>
+                <div>
+                  <span className="mr-2">
+                    <FontAwesomeIcon icon={faUmbrella} className="" />{' '}
+                    {[day.night?.rain, day.day?.rain, day.evening?.rain]
+                      .filter(Boolean)
+                      .join(' / ')}{' '}
+                    mm
+                  </span>
+                  <span>
+                    <FontAwesomeIcon icon={faSnowflake} className="" />{' '}
+                    {[day.night?.snowfall, day.day?.snowfall, day.evening?.snowfall]
+                      .filter(Boolean)
+                      .join(' / ')}{' '}
+                    mm
+                  </span>
+                </div>
+              </div>
+            </div>
+            {/* RIGHT: Weather icons for night, day, evening */}
+            <div className="flex flex-row gap-6 flex-1 justify-end">
+              {['night', 'day', 'evening'].map((per) =>
+                day[per] ? (
+                  <div key={per} className="flex flex-col items-center">
+                    <div className="text-xs font-semibold capitalize">{per}</div>
+                    <Image
+                      src={weatherCodeMap[day[per].weathercode]?.image || '/fallback.png'}
+                      alt={weatherCodeMap[day[per].weathercode]?.description || ''}
+                      width={40}
+                      height={40}
+                    />
+                  </div>
+                ) : (
+                  <div key={per} className="flex flex-col items-center opacity-50">
+                    N/A
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
