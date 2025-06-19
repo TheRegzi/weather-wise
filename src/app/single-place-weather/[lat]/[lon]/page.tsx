@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faLocationDot,
   faTemperatureHigh,
   faUmbrella,
   faSnowflake,
@@ -62,9 +63,12 @@ export default function SinglePlaceWeather() {
 
   return (
     <div className="p-8 flex flex-col mx-auto w-[1000px]">
-      <h1 className="text-3xl font-bold mb-4">Weather for {name ? name : `${lat}, ${lon}`}</h1>
+      <h1 className="text-3xl font-inter font-bold mb-4 text-shadow">
+        <FontAwesomeIcon icon={faLocationDot} className="text-footer w-4 h-4 mr-2" />
+        {name ? name : `${lat}, ${lon}`}
+      </h1>
       <div className="flex flex-row gap-4 justify-between items-center my-8">
-        <h2>The weather now</h2>
+        <h2 className="font-display font-semibold text-lg">The weather now</h2>
         <p className="text-3xl font-semibold">
           <FontAwesomeIcon className="text-3xl" icon={faTemperatureHigh} /> {currentTemperature}°C
         </p>
