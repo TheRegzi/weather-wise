@@ -58,18 +58,17 @@ export default function SinglePlaceWeather() {
     timeIndex !== -1 && hourlyData.wind_speed_10m ? hourlyData.wind_speed_10m[timeIndex] : 'N/A';
 
   const rain = timeIndex !== -1 && hourlyData.rain ? hourlyData.rain[timeIndex] : 'N/A';
-
   const snowfall = timeIndex !== -1 && hourlyData.snowfall ? hourlyData.snowfall[timeIndex] : 'N/A';
 
   return (
     <div className="p-8 flex flex-col mx-auto w-[1000px]">
-      <h1 className="text-3xl font-inter font-bold mb-4 text-shadow">
+      <h1 className="text-4xl font-inter font-bold mb-4 text-shadow mt-10">
         <FontAwesomeIcon icon={faLocationDot} className="text-footer w-4 h-4 mr-2" />
         {name ? name : `${lat}, ${lon}`}
       </h1>
-      <div className="flex flex-row gap-4 justify-between items-center my-8">
-        <h2 className="font-display font-semibold text-lg">The weather now</h2>
-        <p className="text-3xl font-semibold">
+      <div className="flex flex-row gap-4 justify-between items-center mt-4">
+        <h2 className="font-display font-semibold text-lg text-shadow">The weather now</h2>
+        <p className="text-3xl font-semibold text-shadow">
           <FontAwesomeIcon className="text-3xl" icon={faTemperatureHigh} /> {currentTemperature}°C
         </p>
         {snowfall ? (
