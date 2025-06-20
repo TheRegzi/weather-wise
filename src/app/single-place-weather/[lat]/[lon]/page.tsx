@@ -14,7 +14,7 @@ import { weatherCodeMap } from '@/utils/weatherCodeMap';
 import Image from 'next/image';
 
 async function fetchWeatherData(latitude, longitude) {
-  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,wind_speed_10m,weathercode,rain,snowfall&forecast_days=10&timezone=auto`;
+  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,wind_speed_10m,weathercode,rain,snowfall&forecast_days=10&timezone=auto&windspeed_unit=ms`;
   try {
     const response = await fetch(apiUrl);
     if (!response.ok) {
