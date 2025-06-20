@@ -151,7 +151,9 @@ export default function SinglePlaceWeather() {
         <div className="flex flex-row gap-12 flex-1 justify-end pr-7">
           {['night', 'day', 'evening'].map((per) => (
             <div key={per} className="flex flex-col items-center">
-              <div className="text-lg font-roboto font-normal capitalize text-search">{per}</div>
+              <div className="text-lg font-roboto font-normal capitalize text-search text-shadow">
+                {per}
+              </div>
             </div>
           ))}
         </div>
@@ -166,17 +168,18 @@ export default function SinglePlaceWeather() {
               <div className="mt-2">
                 <div>
                   {' '}
-                  {day.tempMin}°C / {day.tempMax}°C
+                  {day.tempMax}°C / {day.tempMin}°C
                 </div>
                 <div>
-                  {' '}
-                  {[day.night?.windSpeed, day.day?.windSpeed, day.evening?.windSpeed]
-                    .filter(Boolean)
-                    .map((w, i) => (
-                      <span key={i}>
-                        {w}m/s{i < 2 ? ' / ' : ''}
-                      </span>
-                    ))}
+                  {(() => {
+                    const winds = [
+                      day.night?.windSpeed,
+                      day.day?.windSpeed,
+                      day.evening?.windSpeed,
+                    ].filter(Boolean);
+                    const avg = Math.round(winds.reduce((sum, n) => sum + n, 0) / winds.length);
+                    return `${avg} m/s`;
+                  })()}
                 </div>
                 <div>
                   <span className="mr-2">
