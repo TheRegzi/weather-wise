@@ -30,7 +30,7 @@ async function fetchWeatherData(latitude, longitude) {
 function getPeriod(hour) {
   if (hour >= 0 && hour < 6) return 'night';
   if (hour >= 6 && hour < 18) return 'day';
-  return 'evening'; // 18–23
+  return 'evening';
 }
 
 function build10DayPeriods(hourly) {
@@ -72,7 +72,6 @@ function build10DayPeriods(hourly) {
           }
         : null;
     }
-    // Calculate daily min/max temp (could also add min/max rain and snowfall if you wanted)
     const allTemps = [].concat(...Object.values(byDate[date]).map((arr) => arr.map((x) => x.temp)));
     dayObj.tempMin = Math.min(...allTemps).toFixed(1);
     dayObj.tempMax = Math.max(...allTemps).toFixed(1);
@@ -200,11 +199,7 @@ export default function SinglePlaceWeather() {
                       height={40}
                     />
                   </div>
-                ) : (
-                  <div key={per} className="flex flex-col items-center opacity-50">
-                    N/A
-                  </div>
-                ),
+                ) : null,
               )}
             </div>
           </div>
