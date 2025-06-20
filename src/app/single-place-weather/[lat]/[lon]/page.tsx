@@ -146,12 +146,22 @@ export default function SinglePlaceWeather() {
           <FontAwesomeIcon className="text-3xl" icon={faWind} /> {windSpeed} m/s
         </p>
       </div>
-      <div className="space-y-4 mt-8">
-        {forecast.map((day) => (
+      <div className="flex flex-row pb-2 gap-8 items-center font-bold text-sm mt-8">
+        <div className="w-48" />
+        <div className="flex flex-row gap-12 flex-1 justify-end pr-7">
+          {['night', 'day', 'evening'].map((per) => (
+            <div key={per} className="flex flex-col items-center">
+              <div className="text-lg font-roboto font-normal capitalize text-search">{per}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="space-y-4 bg-background-secondary p-7">
+        {forecast.map((day, i) => (
           <div key={day.date} className="flex flex-row border-b pb-2 gap-8 items-center">
             {/* LEFT: Date and numbers */}
             <div className="w-48">
-              <div className="font-bold">{day.weekday}</div>
+              <div className="font-bold">{i === 0 ? 'Today' : day.weekday}</div>
               <div className="text-sm text-gray-500">{day.date}</div>
               <div className="mt-2">
                 <div>
@@ -187,16 +197,15 @@ export default function SinglePlaceWeather() {
               </div>
             </div>
             {/* RIGHT: Weather icons for night, day, evening */}
-            <div className="flex flex-row gap-6 flex-1 justify-end">
+            <div className="flex flex-row gap-10 flex-1 justify-end">
               {['night', 'day', 'evening'].map((per) =>
                 day[per] ? (
                   <div key={per} className="flex flex-col items-center">
-                    <div className="text-xs font-semibold capitalize">{per}</div>
                     <Image
                       src={weatherCodeMap[day[per].weathercode]?.image || '/fallback.png'}
                       alt={weatherCodeMap[day[per].weathercode]?.description || ''}
-                      width={40}
-                      height={40}
+                      width={55}
+                      height={55}
                     />
                   </div>
                 ) : null,
