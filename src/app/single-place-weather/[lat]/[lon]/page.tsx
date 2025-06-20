@@ -182,20 +182,38 @@ export default function SinglePlaceWeather() {
                   })()}
                 </div>
                 <div>
-                  <span className="mr-2">
-                    <FontAwesomeIcon icon={faUmbrella} className="" />{' '}
-                    {[day.night?.rain, day.day?.rain, day.evening?.rain]
-                      .filter(Boolean)
-                      .join(' / ')}{' '}
-                    mm
-                  </span>
-                  <span>
-                    <FontAwesomeIcon icon={faSnowflake} className="" />{' '}
-                    {[day.night?.snowfall, day.day?.snowfall, day.evening?.snowfall]
-                      .filter(Boolean)
-                      .join(' / ')}{' '}
-                    mm
-                  </span>
+                  {snowfall ? (
+                    <div>
+                      {(() => {
+                        const snows = [
+                          day.night?.snowfall,
+                          day.day?.snowfall,
+                          day.evening?.snowfall,
+                        ].filter((x) => x !== undefined && x !== null);
+                        const totalSnow = Math.round(snows.reduce((sum, n) => sum + n, 0));
+                        return (
+                          <div>
+                            <FontAwesomeIcon icon={faSnowflake} className="" /> {totalSnow} mm
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  ) : (
+                    <div>
+                      {' '}
+                      {(() => {
+                        const rains = [day.night?.rain, day.day?.rain, day.evening?.rain].filter(
+                          (x) => x !== undefined && x !== null,
+                        );
+                        const totalRain = Math.round(rains.reduce((sum, n) => sum + n, 0));
+                        return (
+                          <div>
+                            <FontAwesomeIcon icon={faUmbrella} className="" /> {totalRain} mm
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
