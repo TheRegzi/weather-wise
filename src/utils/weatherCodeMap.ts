@@ -1,4 +1,6 @@
-export const weatherCodeMap = {
+type WeatherCodeEntry = { description: string; image: string };
+
+export const weatherCodeMap: Record<number, WeatherCodeEntry> = {
   0: { description: 'Clear sky', image: '/assets/brightness_9253338.png' },
   1: { description: 'Mainly clear', image: '/assets/cloud-sun_7407060.png' },
   2: { description: 'Partly cloudy', image: '/assets/clouds-sun_7407066.png' },
