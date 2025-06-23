@@ -38,9 +38,8 @@ function build10DayPeriods(hourly) {
   const byDate = {};
 
   for (let i = 0; i < hourly.time.length; i++) {
-    const dateTime = new Date(hourly.time[i]);
-    const dateStr = dateTime.toISOString().slice(0, 10);
-    const hour = dateTime.getHours();
+    const dateStr = hourly.time[i].slice(0, 10);
+    const hour = new Date(hourly.time[i]).getHours();
     const period = getPeriod(hour);
 
     if (!byDate[dateStr]) {
@@ -132,6 +131,7 @@ export default function SinglePlaceWeather() {
   const todayDate = new Date().toISOString().slice(0, 10);
   const todayIdx = forecast.findIndex((day) => day.date === todayDate);
   const daysToShow = todayIdx === -1 ? forecast : forecast.slice(todayIdx);
+  const daysToShow10 = daysToShow.slice(0, 10);
 
   return (
     <div className="p-8 flex flex-col mx-auto w-[1000px]">
@@ -170,7 +170,7 @@ export default function SinglePlaceWeather() {
         </div>
       </div>
       <div className="space-y-4 bg-background-secondary p-7">
-        {daysToShow.map((day) => (
+        {daysToShow10.map((day) => (
           <div key={day.date} className="flex flex-row border-b pb-2 gap-8 items-center">
             {/* LEFT: Date and numbers */}
             <div className="w-48">
