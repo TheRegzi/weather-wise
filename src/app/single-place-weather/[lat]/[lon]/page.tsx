@@ -76,6 +76,13 @@ function build10DayPeriods(hourly) {
     dayObj.tempMin = Math.min(...allTemps).toFixed(1);
     dayObj.tempMax = Math.max(...allTemps).toFixed(1);
 
+    const allRains = [].concat(...Object.values(byDate[date]).map((arr) => arr.map((x) => x.rain)));
+    dayObj.totalRain = Math.round(allRains.reduce((sum, n) => sum + n, 0));
+    const allSnowfalls = [].concat(
+      ...Object.values(byDate[date]).map((arr) => arr.map((x) => x.snowfall)),
+    );
+    dayObj.totalSnowfall = Math.round(allSnowfalls.reduce((sum, n) => sum + n, 0));
+
     result.push(dayObj);
   }
   return result;
@@ -122,6 +129,10 @@ export default function SinglePlaceWeather() {
   const rain = timeIndex !== -1 && hourlyData.rain ? hourlyData.rain[timeIndex] : 'N/A';
   const snowfall = timeIndex !== -1 && hourlyData.snowfall ? hourlyData.snowfall[timeIndex] : 'N/A';
 
+  const todayDate = new Date().toISOString().slice(0, 10);
+  const todayIdx = forecast.findIndex((day) => day.date === todayDate);
+  const daysToShow = todayIdx === -1 ? forecast : forecast.slice(todayIdx);
+
   return (
     <div className="p-8 flex flex-col mx-auto w-[1000px]">
       <h1 className="text-4xl font-inter font-bold mb-4 text-shadow mt-10">
@@ -159,13 +170,15 @@ export default function SinglePlaceWeather() {
         </div>
       </div>
       <div className="space-y-4 bg-background-secondary p-7">
-        {forecast.map((day, i) => (
+        {daysToShow.map((day) => (
           <div key={day.date} className="flex flex-row border-b pb-2 gap-8 items-center">
             {/* LEFT: Date and numbers */}
             <div className="w-48">
-              <div className="font-bold">{i === 0 ? 'Today' : day.weekday}</div>
-              <div className="text-sm text-gray-500">{day.date}</div>
-              <div className="mt-2">
+              <div className="font-bold font-display text-lg">
+                {day.date === new Date().toISOString().slice(0, 10) ? 'Today' : day.weekday}
+              </div>
+              <div className="text-md text-gray-500">{day.date}</div>
+              <div className="mt-2 font-display text-lg">
                 <div>
                   {' '}
                   {day.tempMax}°C / {day.tempMin}°C
@@ -182,36 +195,13 @@ export default function SinglePlaceWeather() {
                   })()}
                 </div>
                 <div>
-                  {snowfall ? (
+                  {day.totalSnowfall > 0 ? (
                     <div>
-                      {(() => {
-                        const snows = [
-                          day.night?.snowfall,
-                          day.day?.snowfall,
-                          day.evening?.snowfall,
-                        ].filter((x) => x !== undefined && x !== null);
-                        const totalSnow = Math.round(snows.reduce((sum, n) => sum + n, 0));
-                        return (
-                          <div>
-                            <FontAwesomeIcon icon={faSnowflake} className="" /> {totalSnow} mm
-                          </div>
-                        );
-                      })()}
+                      <FontAwesomeIcon icon={faSnowflake} className="" /> {day.totalSnowfall} mm
                     </div>
                   ) : (
                     <div>
-                      {' '}
-                      {(() => {
-                        const rains = [day.night?.rain, day.day?.rain, day.evening?.rain].filter(
-                          (x) => x !== undefined && x !== null,
-                        );
-                        const totalRain = Math.round(rains.reduce((sum, n) => sum + n, 0));
-                        return (
-                          <div>
-                            <FontAwesomeIcon icon={faUmbrella} className="" /> {totalRain} mm
-                          </div>
-                        );
-                      })()}
+                      <FontAwesomeIcon icon={faUmbrella} className="" /> {day.totalRain} mm
                     </div>
                   )}
                 </div>
