@@ -189,13 +189,15 @@ export default function SinglePlaceWeather() {
   const daysToShow10 = daysToShow.slice(0, 10);
 
   return (
-    <div className="p-8 flex flex-col mx-auto w-[1000px]">
+    <div className="p-4 md:p-8 flex flex-col mx-auto w-full lg:w-[1000px]">
       <h1 className="text-4xl font-inter font-bold mb-4 text-shadow mt-10">
         <FontAwesomeIcon icon={faLocationDot} className="text-footer w-5 h-5 mr-2" />
         {name ? name : `${lat}, ${lon}`}
       </h1>
-      <div className="flex flex-row gap-4 justify-between items-center mt-4">
-        <h2 className="font-display font-semibold text-lg text-shadow">The weather now</h2>
+      <div className="flex flex-row gap-2 justify-between items-center mt-4">
+        <h2 className="font-display font-semibold text-lg text-shadow hidden md:block">
+          The weather now
+        </h2>
         <p className="text-3xl font-semibold text-shadow">
           <FontAwesomeIcon className="text-3xl" icon={faTemperatureHigh} /> {currentTemperature}°C
         </p>
@@ -214,7 +216,7 @@ export default function SinglePlaceWeather() {
       </div>
       <div className="flex flex-row pb-2 gap-8 items-center font-bold text-sm mt-8">
         <div className="w-48" />
-        <div className="flex flex-row gap-12 flex-1 justify-end pr-7">
+        <div className="flex flex-row gap-6 md:gap-12 flex-1 justify-end pr-2 md:pr-7">
           {['night', 'day', 'evening'].map((per) => (
             <div key={per} className="flex flex-col items-center">
               <div className="text-lg font-roboto font-normal capitalize text-search text-shadow">
@@ -224,11 +226,11 @@ export default function SinglePlaceWeather() {
           ))}
         </div>
       </div>
-      <div className="space-y-4 bg-background-secondary p-7">
+      <div className="space-y-4 bg-background-secondary p-3 md:p-7">
         {daysToShow10.map((day) => (
-          <div key={day.date} className="flex flex-row border-b pb-2 gap-8 items-center">
+          <div key={day.date} className="flex flex-row border-b pb-2 gap-4 md:gap-8 items-center">
             {/* LEFT: Date and numbers */}
-            <div className="w-48">
+            <div className="w-32 md:w-48">
               <div className="font-bold font-display text-lg">
                 {day.date === todayDate ? 'Today' : day.weekday}
               </div>
@@ -264,7 +266,7 @@ export default function SinglePlaceWeather() {
               </div>
             </div>
             {/* RIGHT: Weather icons for night, day, evening */}
-            <div className="flex flex-row gap-10 flex-1 justify-end">
+            <div className="flex flex-row gap-5 md:gap-10 flex-1 justify-end">
               {(['night', 'day', 'evening'] as PeriodKey[]).map((per) =>
                 day[per] ? (
                   <div key={per} className="flex flex-col items-center">
@@ -280,6 +282,7 @@ export default function SinglePlaceWeather() {
                           alt={weatherIcon?.description || ''}
                           width={55}
                           height={55}
+                          className="w-12 h-12 md:w-[55px] md:h-[55px] object-contain"
                         />
                       );
                     })()}
