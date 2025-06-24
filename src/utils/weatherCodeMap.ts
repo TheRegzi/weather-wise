@@ -9,7 +9,7 @@ export const weatherCodeMap: Record<number, WeatherCodeEntry> = {
   48: { description: 'Depositing rime fog', image: '/assets/rime-fog.png' },
   51: { description: 'Drizzle: Light', image: '/assets/light-drizzle.png' },
   53: { description: 'Drizzle: Moderate', image: '/assets/Moderate-drizzle.svg' },
-  55: { description: 'Drizzle: Dense', image: '/assets/dense_drizzle.png' },
+  55: { description: 'Drizzle: Dense', image: '/assets/dense-drizzle.png' },
   56: { description: 'Freezing Drizzle: Light', image: '/assets/freezing-drizzle.webp' },
   57: { description: 'Freezing Drizzle: Dense', image: '/assets/freezing-drizzle.webp' },
   61: { description: 'Rain: Slight', image: '/assets/slight-rain.png' },
