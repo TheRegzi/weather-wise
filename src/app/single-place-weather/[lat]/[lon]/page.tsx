@@ -161,7 +161,11 @@ export default function SinglePlaceWeather() {
   }, [lat, lon]);
 
   if (!weatherData) {
-    return <div>Loading weather data...</div>;
+    return (
+      <div className="text-center font-display font-semibold text-lg my-10">
+        Loading weather data...
+      </div>
+    );
   }
 
   const hourlyData = weatherData.hourly || {};
