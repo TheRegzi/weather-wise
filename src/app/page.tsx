@@ -29,7 +29,7 @@ interface DailyWeather {
 
 interface WeatherCodeMapItem {
   description: string;
-  icon: string;
+  image: string;
 }
 
 type Weather = {
@@ -45,17 +45,7 @@ interface DayWeatherSummary {
 }
 
 export default function HomePage() {
-  const [query, setQuery] = useState('');
   const [weather, setWeather] = useState<Weather | null>(null);
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setQuery(e.target.value);
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    alert(`Searching for: ${query}`);
-  }
 
   useEffect(() => {
     async function fetchWeather() {
@@ -99,7 +89,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col justify-center w-full xl:w-[1200px] h-[800px] mx-auto p-2 md:p-8">
       <h1 className="font-inter font-semibold text-3xl text-shadow">Welcome to WeatherWise!</h1>
-      <SearchInput value={query} onChange={handleChange} onSubmit={handleSubmit} />
+      <SearchInput />
       <div className="flex flex-col justify-center items-center mt-8 bg-background-secondary bg-opacity-90 p-2 md:p-7">
         <div className="flex w-full md:w-[700px] justify-center">
           <div className="flex flex-row justify-between items-center w-[700px] gap-2">

@@ -1,9 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
-function SearchInput({ value, onChange, onSubmit }) {
+type SearchInputProps = {
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+};
+
+function SearchInput({ value, onChange, onSubmit }: SearchInputProps) {
   return (
     <form onSubmit={onSubmit} className="w-full">
       <label htmlFor="search" className="sr-only">
@@ -48,9 +54,8 @@ export default function SearchWeather() {
   const [search, setSearch] = useState('');
   const router = useRouter();
 
-  const handleChange = (e) => setSearch(e.target.value);
-
-  const handleSubmit = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value);
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push(`/searchresults?page=${encodeURIComponent(search)}`);
   };
