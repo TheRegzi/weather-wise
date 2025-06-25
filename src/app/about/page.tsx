@@ -2,13 +2,20 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <main className="w-[800px] mx-auto flex flex-col">
+    <main className="w-full md:w-[800px] mx-auto flex flex-col px-2">
       <Image
         src="/assets/logo.png"
         alt="Logo"
         width={150}
         height={150}
-        className="w-[150px] h-[150px] justify-center mx-auto mt-10 mb-5"
+        className="w-[150px] h-[150px] justify-center mx-auto mt-10 mb-5 hidden sm:block"
+      />
+      <Image
+        src="/assets/logo-small.png"
+        alt="Logo"
+        width={200}
+        height={200}
+        className="w-full h-full justify-center mx-auto mt-10 mb-5 block sm:hidden"
       />
       <h1 className="font-inter font-semibold text-3xl text-shadow">About us</h1>
       <div className="flex flex-col items-center justify-center mt-3 mb-5 gap-4 bg-background-secondary py-10 px-5 font-display">
@@ -33,7 +40,7 @@ export default function About() {
         alt="Thermometer on the beach"
         width={800}
         height={300}
-        className="w-full h-[220px] object-cover mb-10"
+        className="w-full h-[150px] md:h-[220px] object-cover mb-10"
       />
     </main>
   );
