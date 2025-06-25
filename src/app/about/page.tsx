@@ -10,15 +10,15 @@ export default function About() {
         height={150}
         className="w-[150px] h-[150px] justify-center mx-auto mt-10 mb-5 hidden sm:block"
       />
+      <h1 className="font-inter font-semibold text-3xl text-shadow mt-8 ml-4 sm:ml-0">About us</h1>
       <Image
         src="/assets/logo-small.png"
         alt="Logo"
         width={200}
         height={200}
-        className="w-full h-full justify-center mx-auto mt-10 mb-5 block sm:hidden"
+        className="w-full h-full justify-center mx-auto mt-5 mb-5 block sm:hidden"
       />
-      <h1 className="font-inter font-semibold text-3xl text-shadow">About us</h1>
-      <div className="flex flex-col items-center justify-center mt-3 mb-5 gap-4 bg-background-secondary py-10 px-5 font-display text-shadow">
+      <div className="flex flex-col items-center justify-center mt-3 mb-5 gap-4 bg-background-secondary p-3 sm:py-10 sm:px-5 font-display text-shadow">
         <p>
           Welcome to WeatherWise, your go-to source for accurate and up-to-date weather information.
           At WeatherWise, we are committed to providing you with the most reliable and comprehensive
