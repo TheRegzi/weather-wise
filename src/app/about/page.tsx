@@ -8,10 +8,10 @@ export default function About() {
         alt="Logo"
         width={150}
         height={150}
-        className="w-[150px] h-[150px] justify-center mx-auto my-10"
+        className="w-[150px] h-[150px] justify-center mx-auto mt-10 mb-5"
       />
       <h1 className="font-inter font-semibold text-3xl text-shadow">About us</h1>
-      <div className="flex flex-col items-center justify-center mt-5 mb-10 gap-4 bg-background-secondary py-10 px-5 font-display">
+      <div className="flex flex-col items-center justify-center mt-3 mb-5 gap-4 bg-background-secondary py-10 px-5 font-display">
         <p>
           Welcome to WeatherWise, your go-to source for accurate and up-to-date weather information.
           At WeatherWise, we are committed to providing you with the most reliable and comprehensive
@@ -28,6 +28,13 @@ export default function About() {
           forecasting, helping you make informed decisions every day.
         </p>
       </div>
+      <Image
+        src="/assets/closeup-shot-thermometer-beach-sand.jpg"
+        alt="Thermometer on the beach"
+        width={800}
+        height={300}
+        className="w-full h-[220px] object-cover mb-10"
+      />
     </main>
   );
 }
