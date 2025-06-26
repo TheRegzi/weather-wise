@@ -4,7 +4,7 @@ import { faMobileScreenButton, faEnvelope } from '@fortawesome/free-solid-svg-ic
 export default function Contact() {
   return (
     <main className="w-[1000px] flex flex-col mx-auto justify-center my-16">
-      <h1 className="font-inter font-semibold text-3xl text-shadow">Contact us</h1>
+      <h1 className="font-inter font-semibold text-4xl text-shadow">Contact us</h1>
       <div className="flex flex-row gap-4 text-center color-black">
         <div className="bg-background-secondary p-10 mt-6 justify-center flex-1">
           <FontAwesomeIcon className="text-7xl mt-5 mb-2" icon={faMobileScreenButton} />
@@ -19,8 +19,8 @@ export default function Contact() {
           <p className="font-display text-shadow text-md">weatherwise@gmail.com</p>
         </div>
       </div>
-      <div className="bg-background-secondary justify-center w-full p-10 mt-6 flex-1">
-        <h2 className="font-display text-shadow font-semibold text-2xl my-2 text-center">
+      <div className="bg-background-secondary justify-center w-full p-10 mt-4 flex-1">
+        <h2 className="font-display text-shadow font-semibold text-2xl mt-2 mb-4 text-center">
           Give us feedback!
         </h2>
         <p className="font-display text-shadow text-md w-lg justify-center mx-auto">
@@ -28,6 +28,34 @@ export default function Contact() {
           Fill in the required information, and we will do our best to respond to you as quickly as
           possible.
         </p>
+        <h3 className="font-display text-shadow font-semibold text-xl my-4 text-center">
+          Contact form
+        </h3>
+        <form className="flex flex-col gap-4 w-full max-w-md mx-auto">
+          <input
+            type="text"
+            placeholder="Full name*"
+            className="p-2 border-2 border-gray-300 rounded-lg bg-white"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email*"
+            className="p-2 border-2 border-gray-300 rounded-lg bg-white"
+            required
+          />
+          <textarea
+            placeholder="What can we help you with?*"
+            className="p-2 border-2 border-gray-300 rounded-lg bg-white h-32"
+            required
+          ></textarea>
+          <button
+            type="submit"
+            className="bg-submit font-display text-white p-2 rounded hover:bg-blue-600 transition-colors"
+          >
+            Submit
+          </button>
+        </form>
       </div>
     </main>
   );
