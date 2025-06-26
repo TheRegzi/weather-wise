@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { weatherCodeMap } from '@/utils/weatherCodeMap';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const OSLO = {
   name: 'Oslo',
@@ -93,10 +94,13 @@ export default function HomePage() {
       <div className="flex flex-col justify-center items-center mt-8 bg-background-secondary bg-opacity-90 p-2 md:p-7">
         <div className="flex w-full md:w-[700px] justify-center">
           <div className="flex flex-row justify-between items-center w-[700px] gap-2">
-            <p className="font-display text-shadow text-3xl font-semibold text-left flex items-center">
+            <Link
+              href={`/single-place-weather/${OSLO.latitude}/${OSLO.longitude}?name=${encodeURIComponent(OSLO.name)}`}
+              className="font-display text-shadow text-3xl font-semibold text-left flex items-center"
+            >
               <FontAwesomeIcon icon={faLocationDot} className="text-footer w-4 h-4 mr-2" />
               {OSLO.name}, {OSLO.country}
-            </p>
+            </Link>
             <p className="text-search font-display text-xl">
               Now{' '}
               <span className="text-4xl font-bold text-shadow text-black">
