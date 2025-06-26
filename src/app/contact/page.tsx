@@ -23,35 +23,35 @@ export default function Contact() {
         <h2 className="font-display text-shadow font-semibold text-2xl mt-2 mb-4 text-center">
           Give us feedback!
         </h2>
-        <p className="font-display text-shadow text-md w-lg justify-center mx-auto">
+        <p className="font-display text-shadow text-sm w-lg justify-center mx-auto">
           We appreciate your interest in WeatherWise. Please use this form to get in touch with us.
           Fill in the required information, and we will do our best to respond to you as quickly as
           possible.
         </p>
-        <h3 className="font-display text-shadow font-semibold text-xl my-4 text-center">
+        <h3 className="font-display text-shadow font-semibold text-xl my-5 text-center">
           Contact form
         </h3>
-        <form className="flex flex-col gap-4 w-full max-w-md mx-auto">
+        <form className="flex flex-col gap-4 w-full max-w-lg mx-auto font-display">
           <input
             type="text"
             placeholder="Full name*"
-            className="p-2 border-2 border-gray-300 rounded-lg bg-white"
+            className="p-2 border-2 border-gray-300 rounded-lg bg-form text-shadow"
             required
           />
           <input
             type="email"
             placeholder="Email*"
-            className="p-2 border-2 border-gray-300 rounded-lg bg-white"
+            className="p-2 border-2 border-gray-300 rounded-lg bg-form text-shadow"
             required
           />
           <textarea
             placeholder="What can we help you with?*"
-            className="p-2 border-2 border-gray-300 rounded-lg bg-white h-32"
+            className="p-2 border-2 border-gray-300 rounded-lg bg-form h-32 text-shadow"
             required
           ></textarea>
           <button
             type="submit"
-            className="bg-submit font-display text-white p-2 rounded hover:bg-blue-600 transition-colors"
+            className="bg-submit w-[150px] shadow-lg mx-auto font-display font-medium text-lg text-white p-2 rounded hover:bg-blue-600 transition-colors text-shadow"
           >
             Submit
           </button>
