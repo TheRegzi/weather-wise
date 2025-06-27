@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileScreenButton, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-export default function Contact() {
+export default function Contact(): JSX.Element {
   return (
-    <main className="w-full lg:w-[1000px] flex flex-col mx-auto justify-center my-16 px-2">
+    <main className="w-full lg:w-[1000px] flex flex-col mx-auto justify-center my-16 px-4">
       <h1 className="font-inter font-semibold text-4xl text-shadow">Contact us</h1>
       <div className="flex flex-col sm:flex-row gap-4 text-center color-black">
         <div className="bg-background-secondary p-10 mt-6 justify-center flex-1">
@@ -31,7 +31,7 @@ export default function Contact() {
         <h3 className="font-display text-shadow font-semibold text-xl my-5 text-center">
           Contact form
         </h3>
-        <form className="flex flex-col gap-4 w-full max-w-lg mx-auto font-display">
+        <form action="#" className="flex flex-col gap-4 w-full max-w-lg mx-auto font-display">
           <input
             type="text"
             placeholder="Full name*"
