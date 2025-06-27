@@ -51,6 +51,11 @@ type DayWeather = {
 };
 
 type WeatherAPIData = {
+  current_weather: {
+    temperature: number;
+    windspeed: number;
+    weathercode: number;
+  };
   hourly: HourlyWeather;
 } | null;
 
@@ -58,7 +63,7 @@ async function fetchWeatherData(
   latitude: string | number,
   longitude: string | number,
 ): Promise<WeatherAPIData> {
-  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,wind_speed_10m,weathercode,rain,snowfall&forecast_days=10&timezone=auto&windspeed_unit=ms`;
+  const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,wind_speed_10m,weathercode,rain,snowfall&forecast_days=10&timezone=auto&windspeed_unit=ms`;
   try {
     const response = await fetch(apiUrl);
     if (!response.ok) {
@@ -173,8 +178,7 @@ export default function SinglePlaceWeather() {
   const currentHourString = currentTime.slice(0, 13) + ':00';
   const timeIndex = hourlyData.time.findIndex((time) => time === currentHourString);
 
-  const currentTemperature =
-    timeIndex !== -1 && hourlyData.temperature_2m ? hourlyData.temperature_2m[timeIndex] : 'N/A';
+  const currentTemperature = weatherData?.current_weather?.temperature ?? 'N/A';
 
   const windSpeed =
     timeIndex !== -1 && hourlyData.wind_speed_10m ? hourlyData.wind_speed_10m[timeIndex] : 'N/A';
@@ -199,7 +203,7 @@ export default function SinglePlaceWeather() {
           The weather now
         </h2>
         <p className="text-3xl font-semibold text-shadow">
-          <FontAwesomeIcon className="text-3xl" icon={faTemperatureHigh} /> {currentTemperature}°C
+          <FontAwesomeIcon className="text-3xl" icon={faTemperatureHigh} /> {currentTemperature}°
         </p>
         {snowfall ? (
           <p className="text-xl font-semibold text-shadow">
