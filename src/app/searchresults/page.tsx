@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -31,7 +32,7 @@ async function fetchAPI(searchTerm: string): Promise<{ results?: Place[] }> {
   }
 }
 
-export default function SearchResultsPage() {
+function SearchResults() {
   const searchParams = useSearchParams();
   const search = searchParams.get('page');
   const [places, setPlaces] = useState<Place[]>([]);
@@ -76,5 +77,17 @@ export default function SearchResultsPage() {
         )}
       </div>
     </div>
+  );
+}
+
+function SearchResultsLoading() {
+  return <div>Loading search results...</div>;
+}
+
+export default function SearchResultsPage() {
+  return (
+    <Suspense fallback={<SearchResultsLoading />}>
+      <SearchResults />
+    </Suspense>
   );
 }
