@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function About(): JSX.Element {
+export default function About() {
   return (
     <main className="w-full md:w-[800px] mx-auto flex flex-col px-2">
       <Image
