@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileScreenButton, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-export default function Contact(): JSX.Element {
+export default function Contact() {
   return (
     <main className="w-full lg:w-[1000px] flex flex-col mx-auto justify-center my-16 px-4">
       <h1 className="font-inter font-semibold text-4xl text-shadow">Contact us</h1>
