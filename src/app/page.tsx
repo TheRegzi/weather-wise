@@ -133,9 +133,7 @@ export default function HomePage() {
                   className="flex flex-row gap-8 justify-between items-center border-b border-[#939393] pb-1 mt-4"
                 >
                   <p className="w-12">{summary.name}</p>
-                  <p className="flex-1 text-center">
-                    {summary.tempMin}°C – {summary.tempMax}°C
-                  </p>
+                  <p className="flex-1 text-center">{summary.tempMax}°C</p>
                   {summary.weatherData && (
                     <Image
                       src={summary.weatherData.image}
