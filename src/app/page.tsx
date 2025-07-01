@@ -99,7 +99,7 @@ export default function HomePage() {
               className="font-display text-shadow text-3xl font-semibold text-left flex items-center"
             >
               <FontAwesomeIcon icon={faLocationDot} className="text-footer w-4 h-4 mr-2" />
-              {OSLO.name}, {OSLO.country}
+              {OSLO.name}
             </Link>
             <p className="text-search font-display text-xl">
               Now{' '}
