@@ -24,7 +24,7 @@ function SearchInput({ value, onChange, onSubmit }: SearchInputProps) {
           onChange={onChange}
           placeholder="Search for a place..."
           className="block w-full rounded-3xl border border-gray-300
-            bg-white py-4 pl-10 pr-4 placeholder-color-search
+            bg-searchbar py-4 pl-10 pr-4 placeholder-color-search
             focus:border-blue-700 focus:ring-1 focus:ring-blue-700
             focus:outline-none
             transition shadow-xl mt-4 bg-searchbar font-roboto text-xl font-light"

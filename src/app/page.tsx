@@ -88,8 +88,10 @@ export default function HomePage() {
   }
 
   return (
-    <main className="flex flex-col justify-center w-full xl:w-[1200px] h-[800px] mx-auto p-2 md:p-8">
-      <h1 className="font-inter font-semibold text-3xl text-shadow">Welcome to WeatherWise!</h1>
+    <main className="flex flex-col md:justify-center w-full xl:w-[1200px] h-[800px] mx-auto p-8">
+      <h1 className="font-inter font-semibold text-center text-2xl md:text-3xl mt-12 md:mt-0 text-shadow">
+        Welcome to WeatherWise!
+      </h1>
       <SearchInput />
       <div className="flex flex-col justify-center items-center mt-8 bg-background-secondary bg-opacity-90 p-2 md:p-7">
         <div className="flex w-full md:w-[700px] justify-center">
