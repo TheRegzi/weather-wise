@@ -32,19 +32,31 @@ export default function Contact() {
           Contact form
         </h3>
         <form action="#" className="flex flex-col gap-4 w-full max-w-lg mx-auto font-display">
+          <label htmlFor="fullName" className="sr-only">
+            Full name
+          </label>
           <input
             type="text"
+            id="fullName"
             placeholder="Full name*"
             className="p-2 border-2 border-gray-300 rounded-lg bg-form text-shadow"
             required
           />
+          <label htmlFor="email" className="sr-only">
+            Email
+          </label>
           <input
             type="email"
+            id="email"
             placeholder="Email*"
             className="p-2 border-2 border-gray-300 rounded-lg bg-form text-shadow"
             required
           />
+          <label htmlFor="message" className="sr-only">
+            Message
+          </label>
           <textarea
+            id="message"
             placeholder="What can we help you with?*"
             className="p-2 border-2 border-gray-300 rounded-lg bg-form h-32 text-shadow"
             required
