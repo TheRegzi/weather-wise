@@ -63,7 +63,7 @@ export default function Contact() {
           ></textarea>
           <button
             type="submit"
-            className="bg-submit w-[150px] shadow-lg mx-auto font-display font-medium text-lg text-white p-2 rounded hover:bg-blue-600 transition-colors text-shadow"
+            className="bg-submit w-[150px] cursor-pointer shadow-lg mx-auto font-display font-medium text-lg text-white p-2 rounded hover: hover:bg-blue-600 transition-colors text-shadow"
           >
             Submit
           </button>
