@@ -1,8 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Weather Wise
+
+![Weather Wise Homepage image](./public/assets/weater-wise.png)
+
+## Overview
+
+Weather wise is a weather app I made on my own by using Next.js and Tailwind CSS. It uses a free API from Open Meteo, so you can search for all the places you want and get different search results, that takes you to the specific weather page when clicking on a link. It displays the forecasted weather of ten days for each specific weather page.
+
+## Technologies Used
+
+Next.js – React framework with server-side rendering and file-based routing
+Tailwind CSS – Utility-first CSS framework for rapid UI development
+ESLint – Linter to maintain consistent and error-free JavaScript code
+Prettier – Code formatter for clean and uniform code style
+Husky – Tool for managing Git hooks to automate tasks like linting and formatting before commits
+TypeScript – Main programming language for building frontend logic
+Vercel – Deployment platform optimized for Next.js apps
+
+## Technical Requirements
+
+Front-End Only: The application focuses solely on the front-end, utilizing the Open Meteo API for all back-end functionality.
+Responsive Design: The website should be accessible and user-friendly on all devices.
 
 ## Getting Started
 
-First, run the development server:
+### Installation
+
+1. **Clone the repo:**
+
+   ```bash
+   git clone https://github.com/TheRegzi/weather-wise.git
+   ```
+
+   2. **Navigate to the project directory:**
+
+   ```bash
+   cd weather-wise
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**:
 
 ```bash
 npm run dev
@@ -16,21 +57,14 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you want to contribute, please make a pull request so any changes can be reviewed before being merged. If you have questions or ideas, feel free to open an issue. All contributions are welcome!
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The app is deployed at [https://weather-wise-sigma-one.vercel.app](https://weather-wise-sigma-one.vercel.app)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[My LinkedIn Page](https://www.linkedin.com/in/regine-dille-kornbakk-aa0a7b288/)
