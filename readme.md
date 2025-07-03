@@ -8,13 +8,13 @@ Weather wise is a weather app I made on my own by using Next.js and Tailwind CSS
 
 ## Technologies Used
 
-Next.js – React framework with server-side rendering and file-based routing
-Tailwind CSS – Utility-first CSS framework for rapid UI development
-ESLint – Linter to maintain consistent and error-free JavaScript code
-Prettier – Code formatter for clean and uniform code style
-Husky – Tool for managing Git hooks to automate tasks like linting and formatting before commits
-TypeScript – Main programming language for building frontend logic
-Vercel – Deployment platform optimized for Next.js apps
+- Next.js – React framework with server-side rendering and file-based routing
+- Tailwind CSS – Utility-first CSS framework for rapid UI development
+- ESLint – Linter to maintain consistent and error-free JavaScript code
+- Prettier – Code formatter for clean and uniform code style
+- Husky – Tool for managing Git hooks to automate tasks like linting and formatting before commits
+- TypeScript – Main programming language for building frontend logic
+- Vercel – Deployment platform optimized for Next.js apps
 
 ## Technical Requirements
 
