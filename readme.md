@@ -31,29 +31,29 @@ Responsive Design: The website should be accessible and user-friendly on all dev
    git clone https://github.com/TheRegzi/weather-wise.git
    ```
 
-   2. **Navigate to the project directory:**
+2. **Navigate to the project directory:**
 
    ```bash
    cd weather-wise
    ```
 
-2. **Install dependencies:**
+3. **Install dependencies:**
 
    ```bash
    npm install
    ```
 
-3. **Run the development server**:
+4. **Run the development server**:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
